@@ -2,6 +2,8 @@
 import Alert from "./components/Alert";
 import Button from "./components/Button";
 import { useState } from "react";
+import Like from "./components/Like";
+// import Icons from "./components/Icons";
 
 function App() {
   const [alertVisible, setAlertVisibility] = useState(false);
@@ -18,12 +20,14 @@ function App() {
         onSelectItem={handleSelectItem}
         
       /> */}
-      {alertVisible && (
+      {/* {alertVisible && (
         <Alert onClose={() => setAlertVisibility(false)}>Hello World !!</Alert>
-      )}
-      <Button color="success" onClick={() => setAlertVisibility(true)}>
+      )} */}
+      {/* <Button color="success" onClick={() => setAlertVisibility(true)}>
         My Button
-      </Button>
+      </Button> */}
+      {/* <Icons /> */}
+      <Like onClick={() => console.log("clicked")} />
     </div>
   );
 }
