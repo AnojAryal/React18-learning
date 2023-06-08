@@ -8,6 +8,7 @@ import Message from "./components/Message";
 import NestedObjects from "./components/NestedObjects";
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
+import UpdatingObjects from "./components/UpdatingObjects";
 
 function App() {
   const [cartItems, setCartItems] = useState(["product 1", "product 2"]);
@@ -44,9 +45,12 @@ function App() {
       <div style={{ marginTop: "20px" }}>
         <Message />
       </div>
-      <div>
+      <div style={{ marginTop: "20px" }}>
         <Navbar cartItemsCount={cartItems.length} />
         <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <UpdatingObjects />
       </div>
     </div>
   );
