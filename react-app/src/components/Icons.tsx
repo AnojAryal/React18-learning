@@ -1,10 +1,10 @@
 import React from "react";
-import { BsFillCalendarCheckFill } from "react-icons/bs";
+import { BsMusicNoteBeamed } from "react-icons/bs";
 
 export default function Icons() {
   return (
     <div>
-      <BsFillCalendarCheckFill color="red" size={40} />
+      <BsMusicNoteBeamed color="red" size={40} />
     </div>
   );
 }

@@ -9,6 +9,7 @@ import NestedObjects from "./components/NestedObjects";
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import UpdatingObjects from "./components/UpdatingObjects";
+import ExpandableComponent from "./components/ExpandableComponent";
 
 function App() {
   const [cartItems, setCartItems] = useState(["product 1", "product 2"]);
@@ -51,6 +52,9 @@ function App() {
       </div>
       <div style={{ marginTop: "20px" }}>
         <UpdatingObjects />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <ExpandableComponent />
       </div>
     </div>
   );
