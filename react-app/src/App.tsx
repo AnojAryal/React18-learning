@@ -6,8 +6,12 @@ import Like from "./components/Like";
 import ListGroup from "./components/ListGroup";
 import Message from "./components/Message";
 import NestedObjects from "./components/NestedObjects";
+import Navbar from "./components/Navbar";
+import Cart from "./components/Cart";
 
 function App() {
+  const [cartItems, setCartItems] = useState(["product 1", "product 2"]);
+
   const [alertVisible, setAlertVisibility] = useState(false);
   let items = ["Kathmandu", "Pokhara", "Mustang", "Manang", "Dharan"];
 
@@ -25,11 +29,11 @@ function App() {
       <div style={{ margin: "20px 0" }}>
         {alertVisible && (
           <Alert onClose={() => setAlertVisibility(false)}>
-            Hello World !!
+            This is an alert message.
           </Alert>
         )}
         <Button color="success" onClick={() => setAlertVisibility(true)}>
-          My Button
+          Alert Button
         </Button>
       </div>
       <Icons />
@@ -39,6 +43,10 @@ function App() {
       <NestedObjects />
       <div style={{ marginTop: "20px" }}>
         <Message />
+      </div>
+      <div>
+        <Navbar cartItemsCount={cartItems.length} />
+        <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
       </div>
     </div>
   );
