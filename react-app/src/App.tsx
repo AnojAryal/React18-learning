@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import UpdatingObjects from "./components/UpdatingObjects";
 import ExpandableComponent from "./components/ExpandableComponent";
+import EffectHook from "./components/EffectHook";
 
 function App() {
   const [cartItems, setCartItems] = useState(["product 1", "product 2"]);
@@ -55,6 +56,9 @@ function App() {
       </div>
       <div style={{ marginTop: "20px" }}>
         <ExpandableComponent />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <EffectHook />
       </div>
     </div>
   );
