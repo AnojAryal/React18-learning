@@ -11,8 +11,11 @@ import Cart from "./components/Cart";
 import UpdatingObjects from "./components/UpdatingObjects";
 import ExpandableComponent from "./components/ExpandableComponent";
 import EffectHook from "./components/EffectHook";
+import ProductList from "./components/ProductList";
 
 function App() {
+  const [category, setCategory] = useState("");
+
   const [cartItems, setCartItems] = useState(["product 1", "product 2"]);
 
   const [alertVisible, setAlertVisibility] = useState(false);
@@ -59,6 +62,18 @@ function App() {
       </div>
       <div style={{ marginTop: "20px" }}>
         <EffectHook />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <select
+          className="form-select"
+          onChange={(event) => setCategory(event.target.value)}
+          value={category}
+        >
+          <option value=""></option>
+          <option value="Clothing">Clothing</option>
+          <option value="Household">Household</option>
+        </select>
+        <ProductList category={category} />
       </div>
     </div>
   );
