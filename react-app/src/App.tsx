@@ -12,6 +12,7 @@ import UpdatingObjects from "./components/UpdatingObjects";
 import ExpandableComponent from "./components/ExpandableComponent";
 import EffectHook from "./components/EffectHook";
 import ProductList from "./components/ProductList";
+import EffectCleanup from "./components/EffectCleanup";
 
 function App() {
   const [category, setCategory] = useState("");
@@ -74,6 +75,9 @@ function App() {
           <option value="Household">Household</option>
         </select>
         <ProductList category={category} />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <EffectCleanup />
       </div>
     </div>
   );
