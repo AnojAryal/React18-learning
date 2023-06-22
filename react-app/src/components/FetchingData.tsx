@@ -12,6 +12,8 @@ function FetchingData() {
   const [error, setErrors] = useState("");
 
   useEffect(() => {
+    //get returns promise
+    //promise resolved we will get response otherwise error
     axios
       .get<User[]>("https://jsonplaceholder.typicode.com/users")
       .then((res) => setUsers(res.data))
