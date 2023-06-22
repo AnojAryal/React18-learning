@@ -13,6 +13,7 @@ import ExpandableComponent from "./components/ExpandableComponent";
 import EffectHook from "./components/EffectHook";
 import ProductList from "./components/ProductList";
 import EffectCleanup from "./components/EffectCleanup";
+import FetchingData from "./components/FetchingData";
 
 function App() {
   const [category, setCategory] = useState("");
@@ -78,6 +79,9 @@ function App() {
       </div>
       <div style={{ marginTop: "20px" }}>
         <EffectCleanup />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <FetchingData />
       </div>
     </div>
   );
