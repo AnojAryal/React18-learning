@@ -46,10 +46,29 @@ function FetchingData() {
         setUsers(originalUsers);
       });
   };
+  //adding new user --> first updating ui/ux and then fetchning to server
+  const addUser = () => {
+    const originalUsers = [...users]; //restore the list to original state
+    const newUser = { id: 0, name: "FraNzY" };
+    setUsers([newUser, ...users]);
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", newUser)
+      .then(({ data: savedUser }) => setUsers([savedUser, ...users])) //accessing the data property
+      //destructuring the response
+
+      .catch((error) => {
+        setErrors(error.message);
+        setUsers(originalUsers);
+      });
+  };
   return (
     <>
       {error && <p className="text-danger">{error}</p>}
       {isLoading && <div className="spinner-border"></div>}
+      <button className="btn btn-primary mb-3" onClick={addUser}>
+        Add
+      </button>
       <ul className="list-group">
         {users.map((user) => (
           <li
