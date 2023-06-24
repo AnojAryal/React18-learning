@@ -1,5 +1,5 @@
-import axios, { CanceledError } from "axios";
 import { useEffect, useState } from "react";
+import apiClient, { CanceledError } from "../services/api-client";
 
 interface User {
   id: number;
@@ -18,8 +18,8 @@ function FetchingData() {
     //get returns promise
     //promise resolved we will get response otherwise error
     setLoading(true);
-    axios
-      .get<User[]>("https://jsonplaceholder.typicode.com/users", {
+    apiClient
+      .get<User[]>("/users", {
         signal: controller.signal,
       })
       .then((res) => {
@@ -39,12 +39,10 @@ function FetchingData() {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    axios
-      .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
-      .catch((error) => {
-        setErrors(error.message);
-        setUsers(originalUsers);
-      });
+    apiClient.delete("/users/" + user.id).catch((error) => {
+      setErrors(error.message);
+      setUsers(originalUsers);
+    });
   };
   //adding new user --> first updating ui/ux and then fetchning to server
   const addUser = () => {
@@ -52,8 +50,8 @@ function FetchingData() {
     const newUser = { id: 0, name: "FraNzY" };
     setUsers([newUser, ...users]);
 
-    axios
-      .post("https://jsonplaceholder.typicode.com/users", newUser)
+    apiClient
+      .post("/users", newUser)
       .then(({ data: savedUser }) => setUsers([savedUser, ...users])) //accessing the data property
       //destructuring the response
 
@@ -70,15 +68,10 @@ function FetchingData() {
 
     //put for replacing an object
     //patch for updating or patching one or more properties of object
-    axios
-      .patch(
-        "https://jsonplaceholder.typicode.com/users/" + user.id,
-        updatedUser
-      )
-      .catch((error) => {
-        setErrors(error.message);
-        setUsers(originalUsers);
-      });
+    apiClient.patch("/users/" + user.id, updatedUser).catch((error) => {
+      setErrors(error.message);
+      setUsers(originalUsers);
+    });
   };
   return (
     <>
