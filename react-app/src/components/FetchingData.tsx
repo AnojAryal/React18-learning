@@ -14,7 +14,7 @@ function FetchingData() {
     //promise resolved we will get response otherwise error
 
     setLoading(true);
-    const { request, cancel } = userService.getAllUsers();
+    const { request, cancel } = userService.getAll<User>();
 
     request
       .then((res) => {
@@ -35,7 +35,7 @@ function FetchingData() {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    userService.deleteUser(user.id).catch((error) => {
+    userService.delete(user.id).catch((error) => {
       setErrors(error.message);
       setUsers(originalUsers);
     });
@@ -47,7 +47,7 @@ function FetchingData() {
     setUsers([newUser, ...users]);
 
     userService
-      .createUser(newUser)
+      .create(newUser)
       .then(({ data: savedUser }) => setUsers([savedUser, ...users])) //accessing the data property
       //destructuring the response
       .catch((error) => {
@@ -63,7 +63,7 @@ function FetchingData() {
 
     //put for replacing an object
     //patch for updating or patching one or more properties of object
-    userService.updateUser(updatedUser).catch((error) => {
+    userService.update(updatedUser).catch((error) => {
       setErrors(error.message);
       setUsers(originalUsers);
     });
